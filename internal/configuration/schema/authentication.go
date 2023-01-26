@@ -8,118 +8,118 @@ import (
 
 // AuthenticationBackend represents the configuration related to the authentication backend.
 type AuthenticationBackend struct {
-	PasswordReset PasswordResetAuthenticationBackend `koanf:"password_reset"`
+	PasswordReset PasswordResetAuthenticationBackend `koanf:"password_reset" json:"password_reset"`
 
-	RefreshInterval string `koanf:"refresh_interval"`
+	RefreshInterval string `koanf:"refresh_interval" json:"refresh_interval"`
 
-	File *FileAuthenticationBackend `koanf:"file"`
-	LDAP *LDAPAuthenticationBackend `koanf:"ldap"`
+	File *FileAuthenticationBackend `koanf:"file" json:"file"`
+	LDAP *LDAPAuthenticationBackend `koanf:"ldap" json:"ldap"`
 }
 
 // PasswordResetAuthenticationBackend represents the configuration related to password reset functionality.
 type PasswordResetAuthenticationBackend struct {
-	Disable   bool    `koanf:"disable"`
-	CustomURL url.URL `koanf:"custom_url"`
+	Disable   bool    `koanf:"disable" json:"disable"`
+	CustomURL url.URL `koanf:"custom_url" json:"custom_url"`
 }
 
 // FileAuthenticationBackend represents the configuration related to file-based backend.
 type FileAuthenticationBackend struct {
-	Path     string   `koanf:"path"`
-	Watch    bool     `koanf:"watch"`
-	Password Password `koanf:"password"`
+	Path     string   `koanf:"path" json:"path" jsonschema:"required"`
+	Watch    bool     `koanf:"watch" json:"watch"`
+	Password Password `koanf:"password" json:"password"`
 
-	Search FileSearchAuthenticationBackend `koanf:"search"`
+	Search FileSearchAuthenticationBackend `koanf:"search" json:"search"`
 }
 
 // FileSearchAuthenticationBackend represents the configuration related to file-based backend searching.
 type FileSearchAuthenticationBackend struct {
-	Email           bool `koanf:"email"`
-	CaseInsensitive bool `koanf:"case_insensitive"`
+	Email           bool `koanf:"email" json:"email"`
+	CaseInsensitive bool `koanf:"case_insensitive" json:"case_insensitive"`
 }
 
 // Password represents the configuration related to password hashing.
 type Password struct {
-	Algorithm string `koanf:"algorithm"`
+	Algorithm string `koanf:"algorithm" json:"algorithm"`
 
-	Argon2    Argon2Password    `koanf:"argon2"`
-	SHA2Crypt SHA2CryptPassword `koanf:"sha2crypt"`
-	PBKDF2    PBKDF2Password    `koanf:"pbkdf2"`
-	BCrypt    BCryptPassword    `koanf:"bcrypt"`
-	SCrypt    SCryptPassword    `koanf:"scrypt"`
+	Argon2    Argon2Password    `koanf:"argon2" json:"argon2"`
+	SHA2Crypt SHA2CryptPassword `koanf:"sha2crypt" json:"sha2crypt"`
+	PBKDF2    PBKDF2Password    `koanf:"pbkdf2" json:"pbkdf2"`
+	BCrypt    BCryptPassword    `koanf:"bcrypt" json:"bcrypt"`
+	SCrypt    SCryptPassword    `koanf:"scrypt" json:"scrypt"`
 
-	Iterations  int `koanf:"iterations"`
-	Memory      int `koanf:"memory"`
-	Parallelism int `koanf:"parallelism"`
-	KeyLength   int `koanf:"key_length"`
-	SaltLength  int `koanf:"salt_length"`
+	Iterations  int `koanf:"iterations" json:"iterations"`
+	Memory      int `koanf:"memory" json:"memory"`
+	Parallelism int `koanf:"parallelism" json:"parallelism"`
+	KeyLength   int `koanf:"key_length" json:"key_length"`
+	SaltLength  int `koanf:"salt_length" json:"salt_length"`
 }
 
 // Argon2Password represents the argon2 hashing settings.
 type Argon2Password struct {
-	Variant     string `koanf:"variant"`
-	Iterations  int    `koanf:"iterations"`
-	Memory      int    `koanf:"memory"`
-	Parallelism int    `koanf:"parallelism"`
-	KeyLength   int    `koanf:"key_length"`
-	SaltLength  int    `koanf:"salt_length"`
+	Variant     string `koanf:"variant" json:"variant"`
+	Iterations  int    `koanf:"iterations" json:"iterations"`
+	Memory      int    `koanf:"memory" json:"memory"`
+	Parallelism int    `koanf:"parallelism" json:"parallelism"`
+	KeyLength   int    `koanf:"key_length" json:"key_length"`
+	SaltLength  int    `koanf:"salt_length" json:"salt_length"`
 }
 
 // SHA2CryptPassword represents the sha2crypt hashing settings.
 type SHA2CryptPassword struct {
-	Variant    string `koanf:"variant"`
-	Iterations int    `koanf:"iterations"`
-	SaltLength int    `koanf:"salt_length"`
+	Variant    string `koanf:"variant" json:"variant"`
+	Iterations int    `koanf:"iterations" json:"iterations"`
+	SaltLength int    `koanf:"salt_length" json:"salt_length"`
 }
 
 // PBKDF2Password represents the PBKDF2 hashing settings.
 type PBKDF2Password struct {
-	Variant    string `koanf:"variant"`
-	Iterations int    `koanf:"iterations"`
-	SaltLength int    `koanf:"salt_length"`
+	Variant    string `koanf:"variant" json:"variant"`
+	Iterations int    `koanf:"iterations" json:"iterations"`
+	SaltLength int    `koanf:"salt_length" json:"salt_length"`
 }
 
 // BCryptPassword represents the bcrypt hashing settings.
 type BCryptPassword struct {
-	Variant string `koanf:"variant"`
-	Cost    int    `koanf:"cost"`
+	Variant string `koanf:"variant" json:"variant"`
+	Cost    int    `koanf:"cost" json:"cost"`
 }
 
 // SCryptPassword represents the scrypt hashing settings.
 type SCryptPassword struct {
-	Iterations  int `koanf:"iterations"`
-	BlockSize   int `koanf:"block_size"`
-	Parallelism int `koanf:"parallelism"`
-	KeyLength   int `koanf:"key_length"`
-	SaltLength  int `koanf:"salt_length"`
+	Iterations  int `koanf:"iterations" json:"iterations"`
+	BlockSize   int `koanf:"block_size" json:"block_size"`
+	Parallelism int `koanf:"parallelism" json:"parallelism"`
+	KeyLength   int `koanf:"key_length" json:"key_length"`
+	SaltLength  int `koanf:"salt_length" json:"salt_length"`
 }
 
 // LDAPAuthenticationBackend represents the configuration related to LDAP server.
 type LDAPAuthenticationBackend struct {
-	Address        *AddressLDAP  `koanf:"address"`
-	Implementation string        `koanf:"implementation"`
-	Timeout        time.Duration `koanf:"timeout"`
-	StartTLS       bool          `koanf:"start_tls"`
-	TLS            *TLSConfig    `koanf:"tls"`
+	Address        *AddressLDAP  `koanf:"address" json:"address" jsonschema:"required"`
+	Implementation string        `koanf:"implementation" json:"implementation"`
+	Timeout        time.Duration `koanf:"timeout" json:"timeout"`
+	StartTLS       bool          `koanf:"start_tls" json:"start_tls"`
+	TLS            *TLSConfig    `koanf:"tls" json:"tls`
 
-	BaseDN string `koanf:"base_dn"`
+	BaseDN string `koanf:"base_dn" json:"base_dn"`
 
-	AdditionalUsersDN string `koanf:"additional_users_dn"`
-	UsersFilter       string `koanf:"users_filter"`
+	AdditionalUsersDN string `koanf:"additional_users_dn" json:"additional_users_dn"`
+	UsersFilter       string `koanf:"users_filter" json:"users_filter"`
 
-	AdditionalGroupsDN string `koanf:"additional_groups_dn"`
-	GroupsFilter       string `koanf:"groups_filter"`
+	AdditionalGroupsDN string `koanf:"additional_groups_dn" json:"additional_groups_dn"`
+	GroupsFilter       string `koanf:"groups_filter" json:"groups_filter"`
 
-	GroupNameAttribute   string `koanf:"group_name_attribute"`
-	UsernameAttribute    string `koanf:"username_attribute"`
-	MailAttribute        string `koanf:"mail_attribute"`
-	DisplayNameAttribute string `koanf:"display_name_attribute"`
+	GroupNameAttribute   string `koanf:"group_name_attribute" json:"group_name_attribute"`
+	UsernameAttribute    string `koanf:"username_attribute" json:"username_attribute"`
+	MailAttribute        string `koanf:"mail_attribute" json:"mail_attribute"`
+	DisplayNameAttribute string `koanf:"display_name_attribute" json:"display_name_attribute"`
 
-	PermitReferrals               bool `koanf:"permit_referrals"`
-	PermitUnauthenticatedBind     bool `koanf:"permit_unauthenticated_bind"`
-	PermitFeatureDetectionFailure bool `koanf:"permit_feature_detection_failure"`
+	PermitReferrals               bool `koanf:"permit_referrals" json:"permit_referrals"`
+	PermitUnauthenticatedBind     bool `koanf:"permit_unauthenticated_bind" json:"permit_unauthenticated_bind"`
+	PermitFeatureDetectionFailure bool `koanf:"permit_feature_detection_failure" json:"permit_feature_detection_failure"`
 
-	User     string `koanf:"user"`
-	Password string `koanf:"password"`
+	User     string `koanf:"user" json:"user" jsonschema:"required"`
+	Password string `koanf:"password" json:"password"`
 }
 
 // DefaultPasswordConfig represents the default configuration related to Argon2id hashing.

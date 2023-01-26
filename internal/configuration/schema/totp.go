@@ -2,13 +2,13 @@ package schema
 
 // TOTPConfiguration represents the configuration related to TOTP options.
 type TOTPConfiguration struct {
-	Disable    bool   `koanf:"disable"`
-	Issuer     string `koanf:"issuer"`
-	Algorithm  string `koanf:"algorithm"`
-	Digits     uint   `koanf:"digits"`
-	Period     uint   `koanf:"period"`
-	Skew       *uint  `koanf:"skew"`
-	SecretSize uint   `koanf:"secret_size"`
+	Disable    bool   `koanf:"disable" json:"disable"`
+	Issuer     string `koanf:"issuer" json:"issuer"`
+	Algorithm  string `koanf:"algorithm" json:"algorithm"`
+	Digits     uint   `koanf:"digits" json:"digits"`
+	Period     uint   `koanf:"period" json:"period"`
+	Skew       *uint  `koanf:"skew" json:"skew"`
+	SecretSize uint   `koanf:"secret_size" json:"secret_size"`
 }
 
 var defaultOtpSkew = uint(1)

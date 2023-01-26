@@ -32,6 +32,7 @@ func newRootCmd() *cobra.Command {
 	cmd.PersistentFlags().String(cmdFlagBugReport, fileGitHubIssueTemplateBR, "Sets the path of the bug report issue template file")
 	cmd.PersistentFlags().Int(cmdFlagVersions, 5, "the maximum number of minor versions to list in output templates")
 	cmd.PersistentFlags().String(cmdFlagDirLocales, dirLocales, "The locales directory in relation to the root")
+	cmd.PersistentFlags().String(cmdFlagDirSchema, "internal/configuration/schema", "The locales directory in relation to the root")
 	cmd.PersistentFlags().String(cmdFlagFileWebI18N, fileWebI18NIndex, "The i18n typescript configuration file in relation to the web directory")
 	cmd.PersistentFlags().String(cmdFlagFileWebPackage, fileWebPackage, "The node package configuration file in relation to the web directory")
 	cmd.PersistentFlags().String(cmdFlagDocsDataLanguages, fileDocsDataLanguages, "The languages docs data file in relation to the docs data folder")

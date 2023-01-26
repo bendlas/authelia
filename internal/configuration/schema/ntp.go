@@ -7,11 +7,11 @@ import (
 
 // NTPConfiguration represents the configuration related to ntp server.
 type NTPConfiguration struct {
-	Address             *AddressUDP   `koanf:"address"`
-	Version             int           `koanf:"version"`
-	MaximumDesync       time.Duration `koanf:"max_desync"`
-	DisableStartupCheck bool          `koanf:"disable_startup_check"`
-	DisableFailure      bool          `koanf:"disable_failure"`
+	Address             *AddressUDP   `koanf:"address" json:"address"`
+	Version             int           `koanf:"version" json:"version"`
+	MaximumDesync       time.Duration `koanf:"max_desync" json:"max_desync"`
+	DisableStartupCheck bool          `koanf:"disable_startup_check" json:"disable_startup_check"`
+	DisableFailure      bool          `koanf:"disable_failure" json:"disable_failure"`
 }
 
 // DefaultNTPConfiguration represents default configuration parameters for the NTP server.

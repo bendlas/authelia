@@ -8,13 +8,13 @@ import (
 
 // WebAuthnConfiguration represents the webauthn config.
 type WebAuthnConfiguration struct {
-	Disable     bool   `koanf:"disable"`
-	DisplayName string `koanf:"display_name"`
+	Disable     bool   `koanf:"disable" json:"disable"`
+	DisplayName string `koanf:"display_name" json:"display_name"`
 
-	ConveyancePreference protocol.ConveyancePreference        `koanf:"attestation_conveyance_preference"`
-	UserVerification     protocol.UserVerificationRequirement `koanf:"user_verification"`
+	ConveyancePreference protocol.ConveyancePreference        `koanf:"attestation_conveyance_preference" json:"attestation_conveyance_preference"`
+	UserVerification     protocol.UserVerificationRequirement `koanf:"user_verification" json:"user_verification"`
 
-	Timeout time.Duration `koanf:"timeout"`
+	Timeout time.Duration `koanf:"timeout" json:"timeout"`
 }
 
 // DefaultWebAuthnConfiguration describes the default values for the WebAuthnConfiguration.

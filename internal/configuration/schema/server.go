@@ -8,16 +8,16 @@ import (
 // ServerConfiguration represents the configuration of the http server.
 type ServerConfiguration struct {
 	Address            *AddressTCP `koanf:"address"`
-	Path               string      `koanf:"path"`
-	AssetPath          string      `koanf:"asset_path"`
-	DisableHealthcheck bool        `koanf:"disable_healthcheck"`
+	Path               string `koanf:"path" json:"path"`
+	AssetPath          string `koanf:"asset_path" json:"asset_path"`
+	DisableHealthcheck bool   `koanf:"disable_healthcheck" json:"disable_healthcheck"`
 
-	TLS       ServerTLS       `koanf:"tls"`
-	Headers   ServerHeaders   `koanf:"headers"`
-	Endpoints ServerEndpoints `koanf:"endpoints"`
+	TLS       ServerTLS       `koanf:"tls" json:"tls"`
+	Headers   ServerHeaders   `koanf:"headers" json:"headers"`
+	Endpoints ServerEndpoints `koanf:"endpoints" json:"endpoints"`
 
-	Buffers  ServerBuffers  `koanf:"buffers"`
-	Timeouts ServerTimeouts `koanf:"timeouts"`
+	Buffers  ServerBuffers  `koanf:"buffers" json:"buffers"`
+	Timeouts ServerTimeouts `koanf:"timeouts" json:"timeouts"`
 
 	// Deprecated: use address instead.
 	Host string `koanf:"host"`
@@ -28,34 +28,34 @@ type ServerConfiguration struct {
 
 // ServerEndpoints is the endpoints configuration for the HTTP server.
 type ServerEndpoints struct {
-	EnablePprof   bool `koanf:"enable_pprof"`
-	EnableExpvars bool `koanf:"enable_expvars"`
+	EnablePprof   bool `koanf:"enable_pprof" json:"enable_pprof"`
+	EnableExpvars bool `koanf:"enable_expvars" json:"enable_expvars"`
 
-	Authz map[string]ServerAuthzEndpoint `koanf:"authz"`
+	Authz map[string]ServerAuthzEndpoint `koanf:"authz" json:"authz"`
 }
 
 // ServerAuthzEndpoint is the Authz endpoints configuration for the HTTP server.
 type ServerAuthzEndpoint struct {
-	Implementation string `koanf:"implementation"`
+	Implementation string `koanf:"implementation" json:"implementation"`
 
-	AuthnStrategies []ServerAuthzEndpointAuthnStrategy `koanf:"authn_strategies"`
+	AuthnStrategies []ServerAuthzEndpointAuthnStrategy `koanf:"authn_strategies" json:"authn_strategies"`
 }
 
 // ServerAuthzEndpointAuthnStrategy is the Authz endpoints configuration for the HTTP server.
 type ServerAuthzEndpointAuthnStrategy struct {
-	Name string `koanf:"name"`
+	Name string `koanf:"name" json:"name"`
 }
 
 // ServerTLS represents the configuration of the http servers TLS options.
 type ServerTLS struct {
-	Certificate        string   `koanf:"certificate"`
-	Key                string   `koanf:"key"`
-	ClientCertificates []string `koanf:"client_certificates"`
+	Certificate        string   `koanf:"certificate" json:"certificate"`
+	Key                string   `koanf:"key" json:"key"`
+	ClientCertificates []string `koanf:"client_certificates" json:"client_certificates"`
 }
 
 // ServerHeaders represents the customization of the http server headers.
 type ServerHeaders struct {
-	CSPTemplate string `koanf:"csp_template"`
+	CSPTemplate string `koanf:"csp_template" json:"csp_template"`
 }
 
 // DefaultServerConfiguration represents the default values of the ServerConfiguration.

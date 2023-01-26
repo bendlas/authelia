@@ -75,6 +75,7 @@ const (
 	cmdFlagFileWebPackage              = "file.web.package"
 	cmdFlagDocs                        = "dir.docs"
 	cmdFlagDirLocales                  = "dir.locales"
+	cmdFlagDirSchema                   = "dir.schema"
 	cmdFlagDocsCLIReference            = "dir.docs.cli-reference"
 	cmdFlagDocsContent                 = "dir.docs.content"
 	cmdFlagDocsData                    = "dir.docs.data"

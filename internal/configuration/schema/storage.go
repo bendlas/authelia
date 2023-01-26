@@ -8,16 +8,16 @@ import (
 
 // LocalStorageConfiguration represents the configuration when using local storage.
 type LocalStorageConfiguration struct {
-	Path string `koanf:"path"`
+	Path string `koanf:"path" json:"path"`
 }
 
 // SQLStorageConfiguration represents the configuration of the SQL database.
 type SQLStorageConfiguration struct {
-	Address  *AddressTCP   `koanf:"address"`
-	Database string        `koanf:"database"`
-	Username string        `koanf:"username"`
-	Password string        `koanf:"password"`
-	Timeout  time.Duration `koanf:"timeout"`
+	Address  *AddressTCP   `koanf:"address" json:"address"`
+	Database string        `koanf:"database" json:"database"`
+	Username string        `koanf:"username" json:"username"`
+	Password string        `koanf:"password" json:"password"`
+	Timeout  time.Duration `koanf:"timeout" json:"timeout"`
 
 	// Deprecated: use address instead.
 	Host string `koanf:"host"`
@@ -30,34 +30,34 @@ type SQLStorageConfiguration struct {
 type MySQLStorageConfiguration struct {
 	SQLStorageConfiguration `koanf:",squash"`
 
-	TLS *TLSConfig `koanf:"tls"`
+	TLS *TLSConfig `koanf:"tls" json:"tls"`
 }
 
 // PostgreSQLStorageConfiguration represents the configuration of a PostgreSQL database.
 type PostgreSQLStorageConfiguration struct {
 	SQLStorageConfiguration `koanf:",squash"`
-	Schema                  string `koanf:"schema"`
+	Schema                  string `koanf:"schema" json:"schema"`
 
-	TLS *TLSConfig `koanf:"tls"`
+	TLS *TLSConfig `koanf:"tls" json:"tls"`
 
-	SSL *PostgreSQLSSLStorageConfiguration `koanf:"ssl"`
+	SSL *PostgreSQLSSLStorageConfiguration `koanf:"ssl" json:"ssl"`
 }
 
 // PostgreSQLSSLStorageConfiguration represents the SSL configuration of a PostgreSQL database.
 type PostgreSQLSSLStorageConfiguration struct {
-	Mode            string `koanf:"mode"`
-	RootCertificate string `koanf:"root_certificate"`
-	Certificate     string `koanf:"certificate"`
-	Key             string `koanf:"key"`
+	Mode            string `koanf:"mode" json:"mode"`
+	RootCertificate string `koanf:"root_certificate" json:"root_certificate"`
+	Certificate     string `koanf:"certificate" json:"certificate"`
+	Key             string `koanf:"key" json:"key"`
 }
 
 // StorageConfiguration represents the configuration of the storage backend.
 type StorageConfiguration struct {
-	Local      *LocalStorageConfiguration      `koanf:"local"`
-	MySQL      *MySQLStorageConfiguration      `koanf:"mysql"`
-	PostgreSQL *PostgreSQLStorageConfiguration `koanf:"postgres"`
+	Local      *LocalStorageConfiguration      `koanf:"local" json:"local"`
+	MySQL      *MySQLStorageConfiguration      `koanf:"mysql" json:"mysql"`
+	PostgreSQL *PostgreSQLStorageConfiguration `koanf:"postgres" json:"postgres"`
 
-	EncryptionKey string `koanf:"encryption_key"`
+	EncryptionKey string `koanf:"encryption_key" json:"encryption_key"`
 }
 
 // DefaultSQLStorageConfiguration represents the default SQL configuration.

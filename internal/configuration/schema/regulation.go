@@ -6,7 +6,7 @@ import (
 
 // RegulationConfiguration represents the configuration related to regulation.
 type RegulationConfiguration struct {
-	MaxRetries int           `koanf:"max_retries"`
+	MaxRetries int           `koanf:"max_retries" json:"max_retries"`
 	FindTime   time.Duration `koanf:"find_time,weak"`
 	BanTime    time.Duration `koanf:"ban_time,weak"`
 }

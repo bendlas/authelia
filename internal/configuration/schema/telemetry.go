@@ -7,15 +7,16 @@ import (
 
 // TelemetryConfig represents the telemetry config.
 type TelemetryConfig struct {
-	Metrics TelemetryMetricsConfig `koanf:"metrics"`
+	Metrics TelemetryMetricsConfig `koanf:"metrics" json:"metrics"`
 }
 
 // TelemetryMetricsConfig represents the telemetry metrics config.
 type TelemetryMetricsConfig struct {
-	Enabled  bool           `koanf:"enabled"`
-	Address  *AddressTCP    `koanf:"address"`
-	Buffers  ServerBuffers  `koanf:"buffers"`
-	Timeouts ServerTimeouts `koanf:"timeouts"`
+	Enabled bool        `koanf:"enabled" json:"enabled"`
+	Address *AddressTCP `koanf:"address" json:"address"`
+
+	Buffers  ServerBuffers  `koanf:"buffers" json:"buffers"`
+	Timeouts ServerTimeouts `koanf:"timeouts" json:"timeouts"`
 }
 
 // DefaultTelemetryConfig is the default telemetry configuration.
